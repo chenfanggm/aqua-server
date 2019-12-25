@@ -11,11 +11,20 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'io.netty:netty-all:4.1.44.Final'
 
     testImplementation 'junit:junit:4.12'
 }
 
 application {
-    // Define the main class for the application.
-    mainClassName = 'com.aquarae.netty.server.App'
+    mainClassName = 'com.aquarae.netty.server.EchoServer'
+
+    run {
+        /* Can pass all the properties: */
+        systemProperties System.getProperties()
+        // systemProperty "myvariable", System.getProperty("myvariable")
+
+        /* Need to split the space-delimited value in the exec.args */
+        args System.getProperty("exec.args", "").split()
+    }
 }
