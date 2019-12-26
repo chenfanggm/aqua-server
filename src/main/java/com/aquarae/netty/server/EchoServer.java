@@ -2,6 +2,7 @@ package com.aquarae.netty.server;
 
 import com.aquarae.netty.server.handlers.EchoServerHandler;
 import com.aquarae.netty.server.handlers.EchoServerOutboundHandler;
+import com.aquarae.netty.server.handlers.EchoServerPostHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -31,6 +32,7 @@ public class EchoServer {
                   public void initChannel(SocketChannel ch) throws Exception {
                       ch.pipeline().addLast(new EchoServerOutboundHandler());
                       ch.pipeline().addLast(new EchoServerHandler());
+                      ch.pipeline().addLast(new EchoServerPostHandler());
                   }
               })
               .option(ChannelOption.SO_BACKLOG, 128)          // (5)

@@ -13,13 +13,13 @@ public class EchoServerOutboundHandler extends ChannelOutboundHandlerAdapter {
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
         ByteBuf out = ((ByteBuf) msg);
-        out.writeBytes("\nMore content is appended!".getBytes());
+        out.writeBytes("\nMore content is appended from outbound handler!".getBytes());
 
         System.out.println("\nHere's the out message: ");
         for (int i=0; i < out.capacity(); i++) {
             System.out.print((char) out.getByte(i));
             System.out.flush();
         }
-        ctx.write(msg, promise);
+        super.write(ctx, out, promise);
     }
 }

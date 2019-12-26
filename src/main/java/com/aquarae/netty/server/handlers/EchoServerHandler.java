@@ -15,11 +15,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
             System.out.flush();
         }
         ctx.write(msg);
-    }
-
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) {
-        ctx.flush();
+        ctx.fireChannelRead(msg);
     }
 
     @Override
