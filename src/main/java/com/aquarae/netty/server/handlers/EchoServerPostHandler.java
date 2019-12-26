@@ -37,7 +37,7 @@ public class EchoServerPostHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
-        // Close the connection when an exception is raised.
+        System.out.println("Caught exceptions in POST echo server handler!");
         cause.printStackTrace();
         ctx.close();
     }
