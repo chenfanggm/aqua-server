@@ -9,12 +9,11 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-//        ByteBuf in = (ByteBuf) msg;
-//        while (in.isReadable()) { // (1)
-//            System.out.print((char) in.readByte());
-//            System.out.flush();
-//        }
-
+        ByteBuf in = ((ByteBuf) msg).copy();
+        while (in.isReadable()) { // (1)
+            System.out.print((char) in.readByte());
+            System.out.flush();
+        }
         ctx.write(msg);
     }
 
