@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'com.aquarae.netty.server.EchoServer'
+    mainClassName = 'com.aqua.example.Main'
 
     run {
         /* Can pass all the properties: */

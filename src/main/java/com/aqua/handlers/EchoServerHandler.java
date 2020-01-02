@@ -1,4 +1,4 @@
-package com.aquarae.netty.server.handlers;
+package com.aqua.handlers;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
